@@ -1,4 +1,4 @@
-package main.java.fr.uvsq.poo.monprojet.world;
+package java.fr.uvsq.poo.monprojet.world;
 
 import java.util.ArrayList;
 import java.util.List;

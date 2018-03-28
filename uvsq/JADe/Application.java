@@ -1,4 +1,4 @@
-package main.java.fr.uvsq.poo.monprojet;
+package java.fr.uvsq.poo.monprojet;
 
  
 
