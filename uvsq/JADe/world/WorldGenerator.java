@@ -1,4 +1,4 @@
-package java.fr.uvsq.poo.monprojet.world;
+package world;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,11 +15,11 @@ public class WorldGenerator{
   }
 
   public World create(){
-      
+
   }
 
   public boolean isPlayable(){
-      
+
   }
 
   public void makeDungeon(){

@@ -1,4 +1,4 @@
-package java.fr.uvsq.poo.monprojet.world;
+package world;
 
 public class LootMap{
   private Case[][] loodrop;

@@ -1,4 +1,4 @@
-package uvsq.projetJava;
+package creatures;
 import java.util.*
 
 public class PlayerAI {

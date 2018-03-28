@@ -1,4 +1,4 @@
-package java.fr.uvsq.poo.monprojet.world;
+package world;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class World{
 
   public void deleteLoot(Loot loot){
 
-    
+
   }
 
 
