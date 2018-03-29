@@ -1,6 +1,5 @@
-import java.lang.*;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.*;
+import org.apache.log4j.Logger;
 
 /**
  * Cette classe est le programme principal du projet.

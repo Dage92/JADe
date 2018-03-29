@@ -1,9 +1,5 @@
 package world;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;;
-
 public class WorldGenerator{
   private int height;
   private int width;

@@ -2,8 +2,7 @@ package world;
 
 import creatures.Creatures;
 
-import java.util.ArrayList;
-import java.util.List;;
+import java.util.List;
 
 public class World{
   private Case[][] cases;
