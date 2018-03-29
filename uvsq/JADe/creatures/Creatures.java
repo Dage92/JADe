@@ -1,11 +1,16 @@
 package creatures;
+
+import world.World;
+
+import java.awt.*;
+
 public class Creatures {
 
     World world;
     Creatures creature;
     String name;
     int maxHP, HP, ATK, DEF, maxMP, MP, x, y;
-    Inventaire inventaire;
+    /*Inventaire inventaire;*/
     char glyph;
     Color color;
 

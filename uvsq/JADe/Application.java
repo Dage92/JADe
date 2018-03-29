@@ -1,14 +1,15 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.lang.*;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.*;
 
 /**
  * Cette classe est le programme principal du projet.
  *
- * Elle est une impl??mentation du <em>design pattern</em>
+ * Elle est une implémentation du <em>design pattern</em>
  * <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">Singleton</a>.
  *
- * @author St??phane Lopes
- * @version f??v. 2018
+ * @author Stéphane Lopes
+ * @version fév. 2018
  */
 public enum Application {
     APPLICATION;
@@ -16,27 +17,27 @@ public enum Application {
     private static final Logger logger = LogManager.getLogger(Application.class);
 
     /**
-     * Un exemple de m??thode.
+     * Un exemple de méthode.
      */
     public String getGreetings() {
         return "Hello !";
     }
 
     /**
-     * Cette m??thode est destin??e ?? initialiser et lancer l'ex??cution du programme.
+     * Cette méthode est destinée à initialiser et lancer l'exécution du programme.
      *
-     * @param args les param??tres de la ligne de commande du shell
+     * @param args les paramètres de la ligne de commande du shell
      */
     public void run(String[] args) {
-        logger.trace("D??but du programme");
+        logger.trace("Début du programme");
         System.out.println(getGreetings());
         logger.trace("Fin du programme");
     }
 
     /**
-     * La m??thode de classe <em>main</em> se contente de d??l??guer le lancement du programme ?? la m??thode <em>run</em>.
+     * La méthode de classe <em>main</em> se contente de déléguer le lancement du programme à la méthode <em>run</em>.
      *
-     * @param args les param??tres de la ligne de commande du shell
+     * @param args les paramètres de la ligne de commande du shell
      */
     public static void main(String[] args) {
         APPLICATION.run(args);

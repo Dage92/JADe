@@ -1,19 +1,21 @@
 package world;
 
+import creatures.Creatures;
+
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;;
 
 public class World{
   private Case[][] cases;
   private int height;
   private int width;
-  List<Creature> creatures;
+  List<Creatures> creatures;
 
-  public Case uneCase(int x,int y){
+  public void /*Case*/ uneCase(int x,int y){
 
   }
 
-  public Creature creature(int x, int y){
+  public void /*Creatures*/ creature(int x, int y){
 
   }
 
@@ -22,12 +24,12 @@ public class World{
 
   }
 
-  public void deleteCreature(Creature creature){
+  public void deleteCreature(Creatures creature){
 
 
   }
 
-  public void deleteLoot(Loot loot){
+  public void deleteLoot(/*Loot loot*/){
 
 
   }

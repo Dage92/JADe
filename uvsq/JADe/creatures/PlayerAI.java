@@ -1,5 +1,5 @@
 package creatures;
-import java.util.*
+import java.util.*;
 
 public class PlayerAI {
 
@@ -10,10 +10,10 @@ public class PlayerAI {
 
     }
 
-    void notify()
+    /*void notify()
     {
 
-    }
+    }*/
 
     void pickUpLoot()
     {

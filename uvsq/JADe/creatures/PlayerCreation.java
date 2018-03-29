@@ -10,7 +10,7 @@ public class PlayerCreation {
 
     }
 
-    void setHPmod()
+    /*void setHPmod()
     {
 
     }
@@ -19,7 +19,7 @@ public class PlayerCreation {
     {
 
     }
-
+    */
     void setATKmod()
     {
 

@@ -2,7 +2,7 @@ package world;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.List;;
 
 public class WorldGenerator{
   private int height;
@@ -14,12 +14,12 @@ public class WorldGenerator{
 
   }
 
-  public World create(){
+  public void /*World */Create(){
 
   }
 
   public boolean isPlayable(){
-
+    return true;
   }
 
   public void makeDungeon(){
