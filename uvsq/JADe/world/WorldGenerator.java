@@ -7,20 +7,18 @@ public class WorldGenerator{
   private int width = 99;
   public Pane[][] panes;
 
-  Random rand = new Random();
-  public int Neighbours;
-  public int Iterations;
-  public int PaneX;
-  public int PaneY;
-  public int CloseCellProb;
-  public boolean ProbExceeded;
+  private Random rand = new Random();
+  private int Neighbours;
+  private int Iterations;
+  private int CloseCellProb;
+  private boolean ProbExceeded;
 
   public WorldGenerator(){
       Neighbours = 4;
       Iterations = 50000;
       ProbExceeded = true;
-      PaneX = width;
-      PaneY = height;
+      int paneX = width;
+      int paneY = height;
       CloseCellProb = 45;
   }
 
@@ -37,20 +35,20 @@ public class WorldGenerator{
         int rX = rand.nextInt(width);
         int rY = rand.nextInt(height);
 
-        if(ProbExceeded == true){
+        if (ProbExceeded) {
             if(examineNeighbours(rX,rY) > Neighbours){
-                panes[rX][rY] = Pane.SOL;
+                panes[rX][rY] = Pane.MUR;
             }
             else{
-                panes[rX][rY] = Pane.MUR;
+                panes[rX][rY] = Pane.SOL;
             }
         }
-        else{
+        else {
             if(examineNeighbours(rX,rY) > Neighbours){
-                panes[rX][rY] = Pane.MUR;
+                panes[rX][rY] = Pane.SOL;
             }
             else{
-                panes[rX][rY] = Pane.SOL;
+                panes[rX][rY] = Pane.MUR;
             }
         }
     }
@@ -82,20 +80,14 @@ public class WorldGenerator{
           return false;
       }
   }
-  /*
-  public WorldGenerator(int width, int height){
-      this.width = width;
-      this.height = height;
-      this.panes = new Pane[width][height];
-
-  }
-  */
 
   public World Create(){
       return new World(panes);
 
   }
+
 /*
+//facon simple de generer un monde simplement base sur des probabilites
   private WorldGenerator generateRandomPanes(){
       for(int x = 0; x < width; x++){
           for(int y = 0; y < height ; y++){
@@ -111,22 +103,9 @@ public class WorldGenerator{
   }
 */
 
-/*
-  private WorldGenerator linker(){
-    Pane[][] panes2 = new Pane[width][height];
 
-    return this;
-  }
-*/
-  public boolean isPlayable(){
-    return true;
-  }
-
-  /*
   public WorldGenerator makeDungeon(){
-    return generateRandomPanes();
-        /*linker(); incomplet*/
-
-    //}
+    return generate();
+    }
 
 }

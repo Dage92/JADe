@@ -11,6 +11,9 @@ public class World{
   private int width;
   List<Creatures> creatures;
 
+  public int getWidth(){return width;}
+  public int getHeight(){return height;}
+
   World (Pane[][] panes){
     this.panes = panes;
     this.width = panes.length;
@@ -29,7 +32,7 @@ public class World{
 
   public char symbole(int x,int y){
 
-      return pane(x,y).getSymbole();
+      return panes[x][y].getSymbole();
   }
 
   public void /*Creatures*/ creature(int x, int y){
