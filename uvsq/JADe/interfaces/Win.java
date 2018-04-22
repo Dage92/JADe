@@ -1,5 +1,9 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
+
+import java.awt.event.KeyEvent;
+
 public class Win implements Window {
 
     @Override

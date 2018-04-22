@@ -1,11 +1,17 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
+
+import java.awt.event.KeyEvent;
+
 public class Interaction implements Window {
+    @Override
     public void display(AsciiPanel panel) {
 
     }
 
-    public void reaction(KeyEvent key) {
-
+    @Override
+    public Window reaction(KeyEvent key) {
+        return null;//tmp
     }
 }

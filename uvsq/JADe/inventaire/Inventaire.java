@@ -1,11 +1,15 @@
 package inventaire;
 
+import java.util.List;
+
 public class Inventaire {
     private int espaceMAX;
     private int espace;
-    private List<int> ID;
+    private List<Integer> ID;
 
-    public boolean isFull() {}
+    public boolean isFull() {
+        return true;
+    }
 
     public void moveItem() {}
 

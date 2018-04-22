@@ -1,6 +1,9 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
 import creatures.Creatures;
+
+import java.awt.event.KeyEvent;
 
 public class InventaireUI implements Window {
     protected Creatures player;
@@ -13,6 +16,6 @@ public class InventaireUI implements Window {
 
     @Override
     public Window reaction(KeyEvent key) {
-
+        return null;//tmp
     }
 }

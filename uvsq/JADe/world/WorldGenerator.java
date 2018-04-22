@@ -1,10 +1,11 @@
 package world;
 
 import java.util.Random;
+import world.World.*;
 
-public class WorldGenerator{
-  private int height = 99;
-  private int width = 99;
+public class WorldGenerator extends World {
+  private int height = getHeight();
+  private int width = getWidth();
   public Pane[][] panes;
 
   private Random rand = new Random();
@@ -23,7 +24,7 @@ public class WorldGenerator{
   }
 
   public WorldGenerator  generate(){
-    for(int i = 0; i < width; i++){
+      for(int i = 0; i < width; i++){
         for(int j = 0 ; j < height ; j++){
             if(rand.nextInt(100)< CloseCellProb){
                 panes[i][j] = Pane.SOL;

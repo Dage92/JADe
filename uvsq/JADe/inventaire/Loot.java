@@ -5,8 +5,14 @@ public class Loot {
     private int ID;
     private String flair;
 
-    public int getID() {}
-    public String getName() {}
-    public String getFlair() {}
+    public int getID() {
+        return 0;
+    }
+    public String getName(){
+        return "";
+    }
+    public String getFlair(){
+        return "";
+    }
 
 }

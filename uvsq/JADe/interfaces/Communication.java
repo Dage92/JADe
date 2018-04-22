@@ -1,5 +1,10 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
+
+import java.awt.event.KeyEvent;
+import java.util.List;
+
 public class Communication implements Window {
 
     private List<String> msg;
@@ -10,5 +15,6 @@ public class Communication implements Window {
 
     @Override
     public Window reaction(KeyEvent key){
+        return null;
     }
 }

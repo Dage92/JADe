@@ -1,5 +1,9 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
+
+import java.awt.event.KeyEvent;
+
 public class CharacterCreationUI implements Window {
     private String nom;
     private int age;
@@ -8,19 +12,37 @@ public class CharacterCreationUI implements Window {
     private int DEFmod;
     private int MPmod;
 
-    public String getName(){ }
+    public String getName(){
+        return "";//tmp
+    }
 
-    public int getAge() {}
+    public int getAge() {
+        return 0;//tmp
+    }
 
-    public int getHPmod(){}
+    public int getHPmod(){
+        return 0;//tmp
+    }
 
-    public int getATKmod() {}
+    public int getATKmod(){
+        return 0;//tmp
+    }
 
-    public int getDEFmod() {}
+    public int getDEFmod(){
+        return 0;//tmp
+    }
 
-    public int getMPmod() {}
+    public int getMPmod(){
+        return 0;//tmp
+    }
 
+    @Override
     public void display(AsciiPanel panel){}
+
+    @Override
+    public Window reaction(KeyEvent key) {
+        return null;//tmp
+    }
 
     public void UserInputResponce(KeyEvent key) {}
 }

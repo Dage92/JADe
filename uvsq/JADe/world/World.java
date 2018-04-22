@@ -11,14 +11,31 @@ public class World{
   private int width;
   List<Creatures> creatures;
 
-  public int getWidth(){return width;}
-  public int getHeight(){return height;}
 
   World (Pane[][] panes){
     this.panes = panes;
     this.width = panes.length;
     this.height = panes.length;
 
+  }
+  public World() {
+
+  }
+
+  public void setHeight(int h){
+      this.height = h;
+  }
+
+  public void setWidth(int w){
+      this.width = w;
+  }
+
+  public int getHeight(){
+      return this.height;
+  }
+
+  public int getWidth(){
+      return this.width;
   }
 
   public Pane pane(int x, int y){

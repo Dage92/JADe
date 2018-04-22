@@ -1,6 +1,11 @@
 package interfaces;
 
+import asciiPanel.AsciiPanel;
 import world.World;
+
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Play implements Window{
     private World world;
@@ -23,11 +28,11 @@ public class Play implements Window{
     }
 
     public int scrollX(){
-
+    return 0;
     }
 
     public int scrollY(){
-
+        return 0;
     }
 
     public void reaction(){
@@ -40,5 +45,15 @@ public class Play implements Window{
 
     public void displayMsg(){
 
+    }
+
+    @Override
+    public void display(AsciiPanel panel) {
+
+    }
+
+    @Override
+    public Window reaction(KeyEvent key) {
+        return null;
     }
 }
