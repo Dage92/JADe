@@ -4,8 +4,10 @@ import java.util.Random;
 import world.World.*;
 
 public class WorldGenerator extends World {
-  private int height = getHeight();
-  private int width = getWidth();
+  private int height;
+  private int width;
+  private int paneX;
+  private int paneY;
   public Pane[][] panes;
 
   private Random rand = new Random();
@@ -14,12 +16,12 @@ public class WorldGenerator extends World {
   private int CloseCellProb;
   private boolean ProbExceeded;
 
-  public WorldGenerator(){
+  public WorldGenerator(int width, int height){
       Neighbours = 4;
       Iterations = 50000;
       ProbExceeded = true;
-      int paneX = width;
-      int paneY = height;
+      paneX = width;
+      paneY = height;
       CloseCellProb = 45;
   }
 
