@@ -8,16 +8,26 @@ public enum Pane{
   private char symbole;
   private String def;
 
+  public char symbole(){
+
+      return symbole;
+    }
+
+
+  public String getDef(){
+
+      return def;
+    }
+
+
+
   Pane(char symbole, String def) {
         this.symbole = symbole;
         this.def = def;
   }
 
-  public char getSymbole(){
-      return symbole;
-  }
 
-  public String getDef(){
-      return def;
-  }
+
+
+
 }
