@@ -1,11 +1,15 @@
 import java.util.*;
 import java.lang.*;
 
-public class Application {
+public enum Application {
+    APPLICATION;
+
+    public void run(){
+     //mettre le deroulement du programme
+    }
 
     public static void main(String[] args)
     {
-        System.out.println("Hello there!");
-
+        APPLICATION.run();//lance run
     }
 }
