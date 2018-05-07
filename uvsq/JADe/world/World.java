@@ -12,17 +12,18 @@ public class World{
   List<Creatures> creatures;
 
 
-  World (Pane[][] panes){
+  World(Pane[][] panes){
     this.panes = panes;
     this.width = panes.length;
-    this.height = panes.length;
-
-  }
-  public World() {
-
+    this.height = panes[0].length;
   }
 
-  public void setHeight(int h){
+  //default constructor
+  World() {
+
+  }
+
+    public void setHeight(int h){
       this.height = h;
   }
 
@@ -49,7 +50,7 @@ public class World{
 
   public char symbole(int x,int y){
 
-      return panes[x][y].getSymbole();
+      return panes[x][y].symbole();
   }
 
   public void /*Creatures*/ creature(int x, int y){
