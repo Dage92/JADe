@@ -1,5 +1,8 @@
 package inventaire;
 
+/**
+ * @author JACQUET Julien 21400579
+ */
 public class Item {
 
     private char symbole;
