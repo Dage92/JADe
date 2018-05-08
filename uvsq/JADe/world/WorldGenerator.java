@@ -1,8 +1,12 @@
 package world;
 
 import java.util.Random;
-import world.World.*;
 
+/**
+ * La classe {@code WorldGenerator} sert a generer le monde de notre Rogue-Like de façon aléatoire.
+ * (non procedurale)
+ * @author JACQUET Julien 21400579
+ */
 public class WorldGenerator extends World {
   private int height;
   private int width;
@@ -16,6 +20,11 @@ public class WorldGenerator extends World {
   private int CloseCellProb;
   private boolean ProbExceeded;
 
+    /**
+     * Constructeur de {@code WorldGenerator}
+     * @param width
+     * @param height
+     */
   public WorldGenerator(int width, int height){
       Neighbours = 4;
       Iterations = 50000;
@@ -25,6 +34,11 @@ public class WorldGenerator extends World {
       CloseCellProb = 45;
   }
 
+    /**
+     * Cette methode est l'algorithme de generation aléatoire :
+     * Inspiré de l'algorithme en C# disponible ici : http://www.evilscience.co.uk/map-generator/ et réadapté au JAVA.
+     * @return WolrdGenerator
+     */
   public WorldGenerator  generate(){
       for(int i = 0; i < width; i++){
         for(int j = 0 ; j < height ; j++){
@@ -58,6 +72,12 @@ public class WorldGenerator extends World {
     return this;
   }
 
+    /**
+     * Methode privée nécéssaire au fonctionnement de {@code generate}
+     * @param xVal
+     * @param yVal
+     * @return
+     */
   private int examineNeighbours(int xVal, int yVal){
       int count = 0;
       for(int i = -1; i < 2 ; i++){
@@ -70,6 +90,12 @@ public class WorldGenerator extends World {
       return count;
   }
 
+    /**
+     * Methode privée nécéssaire au fonctionnement de {@code generate}
+     * @param x
+     * @param y
+     * @return
+     */
   private Boolean checkPane(int x, int y){
       if(x >= 0 & x < width & y >= 0 & y<height){
           if(panes[x][y] == Pane.SOL){
@@ -86,11 +112,13 @@ public class WorldGenerator extends World {
 
   public World Create(){
       return new World(panes);
-
   }
 
+    /**
+     * @deprecated Cette methode est la methode basique pour generer un monde aleatoire basé sur des probabilite d'etre du sol ou un mur.
+     * @return
+     */
 /*
-//facon simple de generer un monde simplement base sur des probabilites
   private WorldGenerator generateRandomPanes(){
       for(int x = 0; x < width; x++){
           for(int y = 0; y < height ; y++){
@@ -106,7 +134,10 @@ public class WorldGenerator extends World {
   }
 */
 
-
+    /**
+     * Appel commun a generate, est communement utilisé comme methode de generation du monde.
+     * @return WorldGenerator
+     */
   public WorldGenerator makeDungeon(){
     return generate();
     }
