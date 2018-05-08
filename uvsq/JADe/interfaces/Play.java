@@ -30,7 +30,7 @@ public class Play implements Window{
     }
 
     private void createWorld(){
-        world = new WorldGenerator().makeDungeon();
+        world = new WorldGenerator(99,99).makeDungeon();
     }
 
     public int scrollX(){
@@ -51,7 +51,7 @@ public class Play implements Window{
                 int wx = x + left;
                 int wy = y + top;
 
-                panel.write(world.glyph(wx, wy, player.z), x, y, world.color(wx, wy, player.z));
+                panel.write(world.symbole(wx, wy), x, y, world.color(wx, wy));
             }
         }
     }
