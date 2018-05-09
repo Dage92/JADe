@@ -1,0 +1,4 @@
+#!/bin/bash
+# Cleans the project directory
+
+rm -rf projet-in404-2018

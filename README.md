@@ -1,2 +1,0 @@
-# JADe
-Project Java

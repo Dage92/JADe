@@ -1,0 +1,4 @@
+#!/bin/bash
+# Décompresser l'une des archives zip ou tar se trouvant dans le répertoire ``build/distributions``.
+
+tar -xvf build/distributions/projet-in404-2018.tar
