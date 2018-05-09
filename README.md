@@ -1,6 +1,8 @@
 # JADe
 Projet IN404 - 2018
+
 Auteurs: GOODMAN David (21401471) & JACQUET Julien (21400579)
+
 Ce projet a eu pour but de développer un jeu d'exploration de donjon ([Rogue-like](https://fr.wikipedia.org/wiki/Rogue-like)).
 
 ## Références
@@ -11,14 +13,15 @@ Ce projet a eu pour but de développer un jeu d'exploration de donjon ([Rogue-li
 ## Modèle pour le projet
 Ce modèle nécessite l'installation préalable du [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-### Compiler le projet
+## Compiler le projet
 Le projet se compile en utilisant [gradle](https://gradle.org/).
+
 Aucune installation préalable n'est nécessaire.
 
        $ ./gradlew build
 
 
-### Éxécuter l'application
+## Éxécuter l'application
 * Décompresser l'une des archives zip ou tar se trouvant dans le répertoire "build/distributions".
 
        $ ./extract
@@ -28,6 +31,6 @@ Aucune installation préalable n'est nécessaire.
        $ ./execute
 
 
-### Nettoyer le répertoire
+## Nettoyer le répertoire
 
        $ ./clean
