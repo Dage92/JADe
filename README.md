@@ -14,16 +14,20 @@ Ce modèle nécessite l'installation préalable du [JDK](http://www.oracle.com/t
 ### Compiler le projet
 Le projet se compile en utilisant [gradle](https://gradle.org/).
 Aucune installation préalable n'est nécessaire.
+
        $ ./gradlew build
 
 
 ### Éxécuter l'application
 * Décompresser l'une des archives zip ou tar se trouvant dans le répertoire "build/distributions".
-  $ ./extract
+
+       $ ./extract
 
 * Lancer l'application.
-  $ ./execute
+
+       $ ./execute
 
 
 ### Nettoyer le répertoire
-    $ ./clean
+
+       $ ./clean
