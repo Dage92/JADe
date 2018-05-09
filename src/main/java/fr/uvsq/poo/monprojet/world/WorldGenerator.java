@@ -3,7 +3,7 @@ package world;
 import java.util.Random;
 
 /**
- * La classe {@code WorldGenerator} sert a generer le monde de notre Rogue-Like de façon aléatoire.
+ * La classe {@code WorldGenerator} sert a generer le monde de notre Rogue-Like de facon aleatoire.
  * (non procedurale)
  * @author JACQUET Julien 21400579
  */
@@ -35,8 +35,8 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Cette methode est l'algorithme de generation aléatoire :
-     * Inspiré de l'algorithme en C# disponible ici : http://www.evilscience.co.uk/map-generator/ et réadapté au JAVA.
+     * Cette methode est l'algorithme de generation aleatoire :
+     * Inspire de l'algorithme en C# disponible ici : http://www.evilscience.co.uk/map-generator/ et readapte au JAVA.
      * @return WolrdGenerator
      */
   public WorldGenerator  generate(){
@@ -73,7 +73,7 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Methode privée nécéssaire au fonctionnement de {@code generate}
+     * Methode privee necessaire au fonctionnement de {@code generate}
      * @param xVal
      * @param yVal
      * @return
@@ -91,7 +91,7 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Methode privée nécéssaire au fonctionnement de {@code generate}
+     * Methode privee necessaire au fonctionnement de {@code generate}
      * @param x
      * @param y
      * @return
@@ -115,7 +115,7 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * @deprecated Cette methode est la methode basique pour generer un monde aleatoire basé sur des probabilite d'etre du sol ou un mur.
+     * @deprecated Cette methode est la methode basique pour generer un monde aleatoire base sur des probabilite d'etre du sol ou un mur.
      * @return
      */
 /*
@@ -135,7 +135,7 @@ public class WorldGenerator extends World {
 */
 
     /**
-     * Appel commun a generate, est communement utilisé comme methode de generation du monde.
+     * Appel commun a generate, est communement utilise comme methode de generation du monde.
      * @return WorldGenerator
      */
   public WorldGenerator makeDungeon(){

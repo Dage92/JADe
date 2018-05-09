@@ -1,7 +1,7 @@
 import java.io.*;
 
 /**
- * La Classe {@code Ecriture} sert a sauvegarder l'état d'un monde avant de quitter
+ * La Classe {@code Ecriture} sert a sauvegarder l'etat d'un monde avant de quitter
  *@author JACQUET Julien 21400579
  */
 

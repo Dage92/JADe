@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
- * La classe world represente le monde de notre Rogue-Like composé de {@code Panes}
+ * La classe world represente le monde de notre Rogue-Like compose de {@code Panes}
  * @author JACQUET Julien 21400579
  */
 

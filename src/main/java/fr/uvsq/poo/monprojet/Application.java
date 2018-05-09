@@ -16,19 +16,19 @@ public enum Application {
     private static final Logger logger = LogManager.getLogger(Application.class);
 
     /**
-     * Cette méthode est destinée à initialiser et lancer l'exécution du programme.
+     * Cette methode est destinee a initialiser et lancer l'execution du programme.
      *
-     * @param args les paramètres de la ligne de commande du shell
+     * @param args les parametres de la ligne de commande du shell
      */
     public void run(String[] args) {
-        logger.trace("Début du programme");
+        logger.trace("Debut du programme");
         logger.trace("Fin du programme");
     }
 
     /**
-     * La méthode de classe <em>main</em> se contente de déléguer le lancement du programme à la méthode <em>run</em>.
+     * La methode de classe <em>main</em> se contente de deleguer le lancement du programme a la methode <em>run</em>.
      *
-     * @param args les paramètres de la ligne de commande du shell
+     * @param args les parametres de la ligne de commande du shell
      */
     public static void main(String[] args) {
         APPLICATION.run(args);
