@@ -15,6 +15,10 @@ public enum Application {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
 
+    /**Pour faire le ApplicationTest.java marcher*/
+    public String getGreetings() {
+        return "Hello !";
+    }
     /**
      * Cette methode est destinee a initialiser et lancer l'execution du programme.
      *
@@ -22,6 +26,7 @@ public enum Application {
      */
     public void run(String[] args) {
         logger.trace("Debut du programme");
+        System.out.println(getGreetings());     /**Pour le ApplicationTest.java*/
         logger.trace("Fin du programme");
     }
 

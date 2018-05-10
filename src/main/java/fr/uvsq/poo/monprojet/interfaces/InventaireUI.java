@@ -1,12 +1,12 @@
 package interfaces;
 
 import asciiPanel.AsciiPanel;
-import creatures.Creatures;
+import creatures.Creature;
 
 import java.awt.event.KeyEvent;
 
 public class InventaireUI implements Window {
-    protected Creatures player;
+    protected Creature player;
     private String lettre;
 
     @Override

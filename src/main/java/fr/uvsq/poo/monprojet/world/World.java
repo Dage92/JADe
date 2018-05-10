@@ -1,6 +1,6 @@
 package world;
 
-import creatures.Creatures;
+import creatures.Creature;
 
 import java.awt.*;
 import java.util.List;
@@ -14,7 +14,7 @@ public class World{
   private Pane[][] panes;
   private int height;
   private int width;
-  List<Creatures> creatures;
+  List<Creature> creatures;
 
     /**
      * Constructeur de {@code world}
@@ -106,7 +106,7 @@ public class World{
 
   }
 
-  public void deleteCreature(Creatures creature){
+  public void deleteCreature(Creature creature){
 
 
   }
