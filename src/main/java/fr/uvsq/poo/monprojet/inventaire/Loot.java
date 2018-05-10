@@ -1,4 +1,4 @@
-package inventaire;
+package fr.uvsq.poo.monprojet.inventaire;
 
 public class Loot {
     private String name;

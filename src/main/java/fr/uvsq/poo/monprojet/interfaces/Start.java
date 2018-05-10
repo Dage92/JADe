@@ -1,7 +1,6 @@
-package interfaces;
+package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
-
 import java.awt.event.KeyEvent;
 
 public class Start implements Window{
@@ -13,7 +12,7 @@ public class Start implements Window{
     }
 
     @Override
-    public Window reaction(KeyEvent key){
-        return key.getKeyCode() == KeyEvent.VK_ENTER ? new Play() : this;
+    public Window reaction(KeyEvent userInput){
+        return userInput.getKeyCode() == KeyEvent.VK_ENTER ? new Play() : this;
     }
 }

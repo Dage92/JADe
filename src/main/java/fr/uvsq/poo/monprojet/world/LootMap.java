@@ -1,4 +1,4 @@
-package world;
+package fr.uvsq.poo.monprojet.world;
 
 /**
  * Classe {@code LootMap} servant generer la disposition du {@code Loot} sur {@code World}

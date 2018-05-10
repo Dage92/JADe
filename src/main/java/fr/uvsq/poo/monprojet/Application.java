@@ -15,15 +15,17 @@ public enum Application {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
 
-    /**Pour faire le ApplicationTest.java marcher*/
+    /**Pour faire ApplicationTest.java marcher*/
     public String getGreetings() {
         return "Hello !";
     }
+
     /**
      * Cette methode est destinee a initialiser et lancer l'execution du programme.
      *
      * @param args les parametres de la ligne de commande du shell
      */
+
     public void run(String[] args) {
         logger.trace("Debut du programme");
         System.out.println(getGreetings());     /**Pour le ApplicationTest.java*/

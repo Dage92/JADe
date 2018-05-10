@@ -1,4 +1,4 @@
-package creatures.player;
+package fr.uvsq.poo.monprojet.creatures.player;
 
 import java.util.List;
 

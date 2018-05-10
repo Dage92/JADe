@@ -1,7 +1,7 @@
-package interfaces;
+package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
-import creatures.Creature;
+import fr.uvsq.poo.monprojet.creatures.Creature;
 
 import java.awt.event.KeyEvent;
 

@@ -1,6 +1,6 @@
-package world;
+package fr.uvsq.poo.monprojet.world;
 
-import creatures.Creature;
+import fr.uvsq.poo.monprojet.creatures.Creature;
 
 import java.awt.*;
 import java.util.List;

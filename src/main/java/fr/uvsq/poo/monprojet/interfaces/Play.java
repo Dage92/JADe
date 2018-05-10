@@ -1,9 +1,9 @@
-package interfaces;
+package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
-import world.World;
-import world.WorldGenerator;
-import creatures.Creature;
+import fr.uvsq.poo.monprojet.world.World;
+import fr.uvsq.poo.monprojet.world.WorldGenerator;
+import fr.uvsq.poo.monprojet.creatures.Creature;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;

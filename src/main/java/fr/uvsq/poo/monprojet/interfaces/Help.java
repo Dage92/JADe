@@ -1,4 +1,4 @@
-package interfaces;
+package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
 

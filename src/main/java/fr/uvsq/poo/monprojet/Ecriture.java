@@ -1,3 +1,5 @@
+package fr.uvsq.poo.monprojet;
+
 import java.io.*;
 
 /**

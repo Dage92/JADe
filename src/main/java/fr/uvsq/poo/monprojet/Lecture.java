@@ -1,4 +1,6 @@
-import world.World;
+package fr.uvsq.poo.monprojet;
+
+import fr.uvsq.poo.monprojet.world.World;
 
 import java.io.FileInputStream;
 import java.io.IOException;

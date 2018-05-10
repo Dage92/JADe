@@ -1,4 +1,4 @@
-package inventaire;
+package fr.uvsq.poo.monprojet.inventaire;
 
 /**
  * @author JACQUET Julien 21400579

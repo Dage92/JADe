@@ -1,4 +1,4 @@
-package world;
+package fr.uvsq.poo.monprojet.world;
 
 import java.util.Random;
 
