@@ -9,7 +9,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Play implements Window{
+public class Play implements Window {
+    private AsciiPanel panel;
     private Creature player;
     private World world;
     private int height;

@@ -1,7 +1,10 @@
 package fr.uvsq.poo.monprojet;
 
+import main.java.fr.uvsq.poo.monprojet.interfaces.DisplayGUI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
 import java.util.*;
 import java.lang.*;
 
@@ -29,6 +32,9 @@ public enum Application {
     public void run(String[] args) {
         logger.trace("Debut du programme");
         System.out.println(getGreetings());     /**Pour le ApplicationTest.java*/
+        DisplayGUI GUI = new DisplayGUI();
+        GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GUI.setVisible(true);
         logger.trace("Fin du programme");
     }
 
