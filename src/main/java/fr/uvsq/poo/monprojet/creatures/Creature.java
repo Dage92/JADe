@@ -4,7 +4,7 @@ import world.World;
 
 import java.awt.*;
 
-public class Creatures {
+public class Creature {
 
     World world;
     Creatures creature;

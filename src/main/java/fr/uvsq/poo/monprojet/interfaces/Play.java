@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Play implements Window{
+    private
     private World world;
     private int height;
     private int width;

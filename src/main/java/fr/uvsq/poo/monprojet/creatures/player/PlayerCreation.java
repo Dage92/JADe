@@ -1,4 +1,4 @@
-package creatures;
+package main.java.fr.uvsq.poo.monprojet.creatures.player;
 
 public class PlayerCreation {
 
