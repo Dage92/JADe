@@ -1,5 +1,6 @@
 package fr.uvsq.poo.monprojet.creatures;
 
+import fr.uvsq.poo.monprojet.world.Pane;
 import fr.uvsq.poo.monprojet.world.World;
 
 import java.awt.*;
@@ -58,8 +59,23 @@ public class Creature {
         this.ATK = ATK;
     }
 
-    public int attack(){
+    public int attackVal(){
         return this.ATK;
+    }
+
+    /**
+     * Calcule les degats engendres par une attaque
+     * @param other
+     * @param val
+     * @return
+     */
+    public int attack(Creature other, int val){
+        int dmg = this.ATK - other.DEF;
+        if (dmg < 0){
+            dmg = 0;
+        }
+
+        return dmg;
     }
 
     public int checkHP(){
@@ -71,8 +87,18 @@ public class Creature {
      * @param val - valeur de l'attaque recue
      */
     public void priseDeDegats(int val){
-        this.HP = this.HP - (val - this.DEF);
+        this.HP = this.HP - val;
         this.DEF = this.DEF - 1; //simule de l'usure
+    }
+
+    public void moveBy(int mvx, int mvy){
+
+        Pane pane = world.pane(x+mvx,y+mvy);
+
+        Creature other = world.creature(x+mvx,y+mvy);
+
+        //incomplet
+
     }
 
 }
