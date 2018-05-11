@@ -81,6 +81,8 @@ public class Play implements Window {
     @Override
     public Window reaction(KeyEvent userInput) {
         switch (userInput.getKeyCode()) {
+            case KeyEvent.VK_ENTER: return new Win();
+            case KeyEvent.VK_ESCAPE: return new Lose();
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_H: player.moveBy(-1, 0); break;
             case KeyEvent.VK_RIGHT:
