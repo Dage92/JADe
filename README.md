@@ -7,9 +7,9 @@ Ce projet a eu pour but de développer un jeu d'exploration de donjon ([Rogue-li
 
 ### Note:
 L'élève Anis Bouziane qui était le troisième membre de notre groupe a cessé toute communication depuis le vendredi 4 mai
-(même lorsqu'on lui téléphone ou envoie des messages) sans avoir rendu la moindre partie de son projet. Nous considérons donc qu'il 
-ne fait plus partie de notre groupe et souhaiterions qu'il ne soit pas noté avec nous. Suite à sa disparition mystérieuse nous 
-avons du fournir des efforts considérables pour combler le manque d'un tier de notre projet dans les délais.
+(même lorsqu'on lui téléphone ou envoie des messages) sans avoir rendu la moindre partie de son projet. Nous considérons donc,
+qu'il ne fait plus partie de notre groupe et souhaiterions qu'il ne soit pas noté avec nous. Suite à sa disparition mystérieuse
+nous avons du fournir des efforts considérables pour combler le manque d'un tier de notre projet dans les délais.
 
 ## Manuel Technique
 Vous pouvez trouver ci-joint l'UML de l'idée de notre projet. "UMLprojet.png"
@@ -18,8 +18,8 @@ ensuite il suffisait de ce repartir les packages à créer équitablement.
 
 * Package world : Contient toutes les classes nécéssaires à la gémwnération du monde.
 Notre monde est composé de cases (Panes) qui peuvent etre soit du sol, soit un mur, soit une bordure.
-Dans la classe WorldGenerator se trouve la partie concernant la génération aléatoire. Grace a notre génération de niveau on obtient 
-un labyrinthe.
+Dans la classe WorldGenerator se trouve la partie concernant la génération aléatoire. Grace a notre génération de niveau on
+obtient un labyrinthe.
 World regroupe les éléments du monde.
 LootMap sert a disposer de maniere aléatoire des elements de Loot dans le Monde.
 
@@ -33,8 +33,8 @@ Dans le sous package player on a ce qui concerne uniquement le joueur, et dans l
 Chaque type de NPC est représenté par une classe différente.
 
 * Package interface: Contient toutes les classes nécéssaires pour la visualisation graphique du monde.
-Window est tout d'abord l'interface principale pour gerer l'interface graphique et est implémenté par toute les autres classes dans 
-le package interfaces.
+Window est tout d'abord l'interface principale pour gerer l'interface graphique et est implémenté par toute les autres classes
+dans le package interfaces.
 Start est la classe qui permet d'afficher l'état initiale graphique de notre RogueLike. Elle demande à l'utilisateur d'appuyer sur
 "Entrer" pour démarer le jeu.
 Play est la classe principale de notre jeu. Elle régit la plupart des comportement graphique qui se déroule lors de l'état de jeu.
