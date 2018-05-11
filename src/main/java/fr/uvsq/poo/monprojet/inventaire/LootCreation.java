@@ -3,8 +3,7 @@ package fr.uvsq.poo.monprojet.inventaire;
 import java.awt.Color;
 import java.util.List;
 import asciiPanel.AsciiPanel;
-import fr.uvsq.poo.monprojet.world.World;
-import fr.uvsq.poo.monprojet.world.LootMap;
+import fr.uvsq.poo.monprojet.world.*;
 
 /**
  * @author GOODMAN David 21401471

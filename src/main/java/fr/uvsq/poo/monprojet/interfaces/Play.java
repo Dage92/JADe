@@ -1,16 +1,19 @@
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
-import fr.uvsq.poo.monprojet.world.World;
-import fr.uvsq.poo.monprojet.world.WorldGenerator;
+import fr.uvsq.poo.monprojet.world.*;
 import fr.uvsq.poo.monprojet.creatures.Creature;
+import fr.uvsq.poo.monprojet.creatures.player.PlayerCreation;
+import fr.uvsq.poo.monprojet.inventaire.*;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
+
 
 public class Play implements Window {
-    private Creature player;
+    private PlayerCreation player;
     private World world;
     private int height;
     private int width;
@@ -21,11 +24,13 @@ public class Play implements Window {
         width = 23;
         //msg = new ArrayList<String>();
         createWorld();
+        player = new PlayerCreation(world, player.getSymbole(), player.getColor(), player.getName(), player.getHP(), player.getATK(), player.getDEF);
+        //LootCreation maker = new LootCreation(world);
+        //createLoot(maker);
     }
 
-    private void createCreature(){
 
-    }
+    private void createCreature(Creature creator){ }
 
     private void createLoot(LootCreation maker){
         for (int i = 0; i < world.getWidth() * world.getHeight() / 20; i++) {
@@ -34,7 +39,7 @@ public class Play implements Window {
     }
 
     private void createWorld(){
-        world = new WorldGenerator(90,32).makeDungeon();
+        world = new WorldGenerator(90,32).makeDungeon().build();
     }
 
     public int scrollX(){
