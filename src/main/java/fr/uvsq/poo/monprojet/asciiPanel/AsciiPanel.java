@@ -5,9 +5,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ByteLookupTable;
 import java.awt.image.LookupOp;
+import java.awt.image.ShortLookupTable;
 import java.io.IOException;
+import java.io.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
 public class AsciiPanel extends JPanel {
 	private static final long serialVersionUID = -4167851861147593092L;
 
-	/**
+    /**
      * The color black (pure black).
      */
     public static Color black = new Color(0, 0, 0);
@@ -98,12 +100,13 @@ public class AsciiPanel extends JPanel {
      */
     public static Color brightWhite = new Color(255, 255, 255);
 
-	private Image offscreenBuffer;
-	private Graphics offscreenGraphics;
+    private Image offscreenBuffer;
+    private Graphics offscreenGraphics;
     private int widthInCharacters;
     private int heightInCharacters;
     private int charWidth = 9;
     private int charHeight = 16;
+    public String terminalFontFile = "cp437_9x16.png";
     private Color defaultBackgroundColor;
     private Color defaultForegroundColor;
     private int cursorX;
@@ -116,6 +119,7 @@ public class AsciiPanel extends JPanel {
     private char[][] oldChars;
     private Color[][] oldBackgroundColors;
     private Color[][] oldForegroundColors;
+    private AsciiFont asciiFont;
 
     /**
      * Gets the height, in pixels, of a character.
@@ -242,6 +246,44 @@ public class AsciiPanel extends JPanel {
     }
 
     /**
+     * Gets the currently selected font
+     * @return
+     */
+    public AsciiFont getAsciiFont() {
+        return asciiFont;
+    }
+
+    /**
+     * Sets the used font. It is advisable to make sure the parent component is properly sized after setting the font
+     * as the panel dimensions will most likely change
+     * @param font
+     */
+    public void setAsciiFont(AsciiFont font)
+    {
+        if(this.asciiFont == font)
+        {
+            return;
+        }
+        this.asciiFont = font;
+
+        this.charHeight = font.getHeight();
+        this.charWidth = font.getWidth();
+        this.terminalFontFile = font.getFontFilename();
+
+        Dimension panelSize = new Dimension(charWidth * widthInCharacters, charHeight * heightInCharacters);
+        setPreferredSize(panelSize);
+
+        glyphs = new BufferedImage[256];
+
+        offscreenBuffer = new BufferedImage(panelSize.width, panelSize.height, BufferedImage.TYPE_INT_RGB);
+        offscreenGraphics = offscreenBuffer.getGraphics();
+
+        loadGlyphs();
+
+        oldChars = new char[widthInCharacters][heightInCharacters];
+    }
+
+    /**
      * Class constructor.
      * Default size is 80x24.
      */
@@ -255,17 +297,28 @@ public class AsciiPanel extends JPanel {
      * @param height
      */
     public AsciiPanel(int width, int height) {
+    	this(width, height, null);
+    }
+    
+    /**
+     * Class constructor specifying the width and height in characters and the AsciiFont
+     * @param width
+     * @param height
+     * @param font if passing null, standard font CP437_9x16 will be used
+     */
+    public AsciiPanel(int width, int height, AsciiFont font) {
         super();
 
-        if (width < 1)
+        if (width < 1) {
             throw new IllegalArgumentException("width " + width + " must be greater than 0." );
+        }
 
-        if (height < 1)
+        if (height < 1) {
             throw new IllegalArgumentException("height " + height + " must be greater than 0." );
+        }
 
         widthInCharacters = width;
         heightInCharacters = height;
-        setPreferredSize(new Dimension(charWidth * widthInCharacters, charHeight * heightInCharacters));
 
         defaultBackgroundColor = black;
         defaultForegroundColor = white;
@@ -274,15 +327,13 @@ public class AsciiPanel extends JPanel {
         backgroundColors = new Color[widthInCharacters][heightInCharacters];
         foregroundColors = new Color[widthInCharacters][heightInCharacters];
 
-        oldChars = new char[widthInCharacters][heightInCharacters];
         oldBackgroundColors = new Color[widthInCharacters][heightInCharacters];
         oldForegroundColors = new Color[widthInCharacters][heightInCharacters];
 
-        glyphs = new BufferedImage[256];
-        
-        loadGlyphs();
-        
-        AsciiPanel.this.clear();
+        if(font == null) {
+        	font = AsciiFont.CP437_9x16;
+        }
+        setAsciiFont(font);
     }
     
     @Override
@@ -294,12 +345,7 @@ public class AsciiPanel extends JPanel {
     public void paint(Graphics g) {
         if (g == null)
             throw new NullPointerException();
-        
-        if (offscreenBuffer == null){
-            offscreenBuffer = createImage(this.getWidth(), this.getHeight()); 
-            offscreenGraphics = offscreenBuffer.getGraphics();
-        }
-        
+
         for (int x = 0; x < widthInCharacters; x++) {
             for (int y = 0; y < heightInCharacters; y++) {
             	if (oldBackgroundColors[x][y] == backgroundColors[x][y]
@@ -325,50 +371,59 @@ public class AsciiPanel extends JPanel {
 
     private void loadGlyphs() {
         try {
-            glyphSprite = ImageIO.read(AsciiPanel.class.getResource("cp437.png"));
+            glyphSprite = ImageIO.read(AsciiPanel.class.getClassLoader().getResourceAsStream(terminalFontFile));
         } catch (IOException e) {
             System.err.println("loadGlyphs(): " + e.getMessage());
         }
 
         for (int i = 0; i < 256; i++) {
-            int sx = (i % 32) * charWidth + 8;
-            int sy = (i / 32) * charHeight + 8;
+            int sx = (i % 16) * charWidth;
+            int sy = (i / 16) * charHeight;
 
             glyphs[i] = new BufferedImage(charWidth, charHeight, BufferedImage.TYPE_INT_ARGB);
             glyphs[i].getGraphics().drawImage(glyphSprite, 0, 0, charWidth, charHeight, sx, sy, sx + charWidth, sy + charHeight, null);
         }
     }
-
+        
+    /**
+     * Create a <code>LookupOp</code> object (lookup table) mapping the original 
+     * pixels to the background and foreground colors, respectively. 
+     * @param bgColor the background color
+     * @param fgColor the foreground color
+     * @return the <code>LookupOp</code> object (lookup table)
+     */
     private LookupOp setColors(Color bgColor, Color fgColor) {
-        byte[] a = new byte[256];
-        byte[] r = new byte[256];
-        byte[] g = new byte[256];
-        byte[] b = new byte[256];
+        short[] a = new short[256];
+        short[] r = new short[256];
+        short[] g = new short[256];
+        short[] b = new short[256];
 
+        byte bga = (byte) (bgColor.getAlpha());
         byte bgr = (byte) (bgColor.getRed());
         byte bgg = (byte) (bgColor.getGreen());
         byte bgb = (byte) (bgColor.getBlue());
 
+        byte fga = (byte) (fgColor.getAlpha());
         byte fgr = (byte) (fgColor.getRed());
         byte fgg = (byte) (fgColor.getGreen());
         byte fgb = (byte) (fgColor.getBlue());
 
         for (int i = 0; i < 256; i++) {
             if (i == 0) {
-                a[i] = (byte) 255;
+                a[i] = bga;
                 r[i] = bgr;
                 g[i] = bgg;
                 b[i] = bgb;
             } else {
-                a[i] = (byte) 255;
+                a[i] = fga;
                 r[i] = fgr;
                 g[i] = fgg;
                 b[i] = fgb;
             }
         }
 
-        byte[][] table = {r, g, b, a};
-        return new LookupOp(new ByteLookupTable(0, table), null);
+        short[][] table = {r, g, b, a};
+        return new LookupOp(new ShortLookupTable(0, table), null);
     }
 
     /**
@@ -407,6 +462,7 @@ public class AsciiPanel extends JPanel {
 
     /**
      * Clear the section of the screen with the specified character and whatever the default foreground and background colors are.
+     * The cursor position will not be modified.
      * @param character  the character to write
      * @param x          the distance from the left to begin writing from
      * @param y          the distance from the top to begin writing from
@@ -473,11 +529,16 @@ public class AsciiPanel extends JPanel {
         if (y + height > heightInCharacters)
             throw new IllegalArgumentException("y + height " + (y + height) + " must be less than " + (heightInCharacters + 1) + "." );
 
+        int originalCursorX = cursorX;
+        int originalCursorY = cursorY;
         for (int xo = x; xo < x + width; xo++) {
             for (int yo = y; yo < y + height; yo++) {
                 write(character, xo, yo, foreground, background);
             }
         }
+        cursorX = originalCursorX;
+        cursorY = originalCursorY;
+
         return this;
     }
 
@@ -488,7 +549,7 @@ public class AsciiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public AsciiPanel write(char character) {
-        if (character < 0 || character >= glyphs.length)
+        if (character < 0 || character > glyphs.length)
             throw new IllegalArgumentException("character " + character + " must be within range [0," + glyphs.length + "]." );
 
         return write(character, cursorX, cursorY, defaultForegroundColor, defaultBackgroundColor);
@@ -607,8 +668,8 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (cursorX + string.length() >= widthInCharacters)
-            throw new IllegalArgumentException("cursorX + string.length() " + (cursorX + string.length()) + " must be less than " + widthInCharacters + "." );
+        if (cursorX + string.length() > widthInCharacters)
+            throw new IllegalArgumentException("cursorX + string.length() " + (cursorX + string.length()) + " must be less than " + widthInCharacters + ".");
 
         return write(string, cursorX, cursorY, defaultForegroundColor, defaultBackgroundColor);
     }
@@ -624,7 +685,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (cursorX + string.length() >= widthInCharacters)
+        if (cursorX + string.length() > widthInCharacters)
             throw new IllegalArgumentException("cursorX + string.length() " + (cursorX + string.length()) + " must be less than " + widthInCharacters + "." );
 
         return write(string, cursorX, cursorY, foreground, defaultBackgroundColor);
@@ -642,7 +703,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (cursorX + string.length() >= widthInCharacters)
+        if (cursorX + string.length() > widthInCharacters)
             throw new IllegalArgumentException("cursorX + string.length() " + (cursorX + string.length()) + " must be less than " + widthInCharacters + "." );
 
         return write(string, cursorX, cursorY, foreground, background);
@@ -660,7 +721,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (x + string.length() >= widthInCharacters)
+        if (x + string.length() > widthInCharacters)
             throw new IllegalArgumentException("x + string.length() " + (x + string.length()) + " must be less than " + widthInCharacters + "." );
 
         if (x < 0 || x >= widthInCharacters)
@@ -685,7 +746,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (x + string.length() >= widthInCharacters)
+        if (x + string.length() > widthInCharacters)
             throw new IllegalArgumentException("x + string.length() " + (x + string.length()) + " must be less than " + widthInCharacters + "." );
 
         if (x < 0 || x >= widthInCharacters)
@@ -711,7 +772,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null." );
         
-        if (x + string.length() >= widthInCharacters)
+        if (x + string.length() > widthInCharacters)
             throw new IllegalArgumentException("x + string.length() " + (x + string.length()) + " must be less than " + widthInCharacters + "." );
 
         if (x < 0 || x >= widthInCharacters)
@@ -743,7 +804,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (string.length() >= widthInCharacters)
+        if (string.length() > widthInCharacters)
             throw new IllegalArgumentException("string.length() " + string.length() + " must be less than " + widthInCharacters + "." );
 
         int x = (widthInCharacters - string.length()) / 2;
@@ -766,7 +827,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null" );
 
-        if (string.length() >= widthInCharacters)
+        if (string.length() > widthInCharacters)
             throw new IllegalArgumentException("string.length() " + string.length() + " must be less than " + widthInCharacters + "." );
 
         int x = (widthInCharacters - string.length()) / 2;
@@ -790,7 +851,7 @@ public class AsciiPanel extends JPanel {
         if (string == null)
             throw new NullPointerException("string must not be null." );
 
-        if (string.length() >= widthInCharacters)
+        if (string.length() > widthInCharacters)
             throw new IllegalArgumentException("string.length() " + string.length() + " must be less than " + widthInCharacters + "." );
 
         int x = (widthInCharacters - string.length()) / 2;
@@ -808,5 +869,32 @@ public class AsciiPanel extends JPanel {
             write(string.charAt(i), x + i, y, foreground, background);
         }
         return this;
+    }
+    
+    public void withEachTile(TileTransformer transformer){
+		withEachTile(0, 0, widthInCharacters, heightInCharacters, transformer);
+    }
+    
+    public void withEachTile(int left, int top, int width, int height, TileTransformer transformer){
+		AsciiCharacterData data = new AsciiCharacterData();
+		
+    	for (int x0 = 0; x0 < width; x0++)
+    	for (int y0 = 0; y0 < height; y0++){
+    		int x = left + x0;
+    		int y = top + y0;
+    		
+    		if (x < 0 || y < 0 || x >= widthInCharacters || y >= heightInCharacters)
+    			continue;
+    		
+    		data.character = chars[x][y];
+    		data.foregroundColor = foregroundColors[x][y];
+    		data.backgroundColor = backgroundColors[x][y];
+    		
+    		transformer.transformTile(x, y, data);
+    		
+    		chars[x][y] = data.character;
+    		foregroundColors[x][y] = data.foregroundColor;
+    		backgroundColors[x][y] = data.backgroundColor;
+    	}
     }
 }

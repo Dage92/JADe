@@ -1,41 +1,32 @@
 package fr.uvsq.poo.monprojet;
 
-import main.java.fr.uvsq.poo.monprojet.interfaces.DisplayGUI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.util.*;
 import java.lang.*;
+import asciiPanel.AsciiPanel;
+
 
 /**
  * Enumeration {@code Application} contenant la methode principale de notre programme
  * @author GOODMAN David 21401471 & JACQUET Julien 21400579
  */
 
-public enum Application {
-    APPLICATION;
-
+public class Application extends JFrame{
+    //APPLICATION;
+    private static final long serialVersionUID = 1060623638149583738L;
+    private AsciiPanel panel;
     private static final Logger logger = LogManager.getLogger(Application.class);
+    public static String greeting = "Hello!";
 
-    /**Pour faire ApplicationTest.java marcher*/
-    public String getGreetings() {
-        return "Hello !";
-    }
-
-    /**
-     * Cette methode est destinee a initialiser et lancer l'execution du programme.
-     *
-     * @param args les parametres de la ligne de commande du shell
-     */
-
-    public void run(String[] args) {
-        logger.trace("Debut du programme");
-        System.out.println(getGreetings());     /**Pour le ApplicationTest.java*/
-        DisplayGUI GUI = new DisplayGUI();
-        GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        GUI.setVisible(true);
-        logger.trace("Fin du programme");
+    public Application(){
+        super();
+        panel = new AsciiPanel();
+        panel.writeCenter("JADe", 1);
+        add(panel);
+        pack();
     }
 
     /**
@@ -44,6 +35,11 @@ public enum Application {
      * @param args les parametres de la ligne de commande du shell
      */
     public static void main(String[] args) {
-        APPLICATION.run(args);
+        logger.trace("Debut du programme");
+        System.out.println(Application.greeting);     //Pour le ApplicationTest.java
+        Application GUI = new Application();
+        GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GUI.setVisible(true);
+        logger.trace("Fin du programme");
     }
 }
