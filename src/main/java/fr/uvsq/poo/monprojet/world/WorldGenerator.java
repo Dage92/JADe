@@ -8,8 +8,8 @@ import java.util.Random;
  * @author JACQUET Julien 21400579
  */
 public class WorldGenerator extends World {
-  private int height;
-  private int width;
+  private int height = 99;
+  private int width = 99;
   private int paneX;
   private int paneY;
   public Pane[][] panes;
@@ -21,11 +21,35 @@ public class WorldGenerator extends World {
   private boolean ProbExceeded;
 
     /**
+     * return height or fallback to 99(bound must be positive)
+     * @return - height or 99
+     */
+  public int getHeight(){
+      if(this.height > 0){
+          return this.height;
+      }
+      //fallback
+      return 99;
+  }
+
+    /**
+     * return width or fallback to 99 (bound must be positive)
+     * @return - width or 99
+     */
+  public int getWidth(){
+      if(this.height > 0){
+          return this.width;
+      }
+      return 99;
+  }
+
+    /**
      * Constructeur de {@code WorldGenerator}
      * @param width
      * @param height
      */
   public WorldGenerator(int width, int height){
+      super(height , width);
       Neighbours = 4;
       Iterations = 50000;
       ProbExceeded = true;
@@ -39,7 +63,7 @@ public class WorldGenerator extends World {
      * Inspire de l'algorithme en C# disponible ici : http://www.evilscience.co.uk/map-generator/ et readapte au JAVA.
      * @return WolrdGenerator
      */
-  public WorldGenerator  generate(){
+  public WorldGenerator generate(){
       int neigh = 0;
       for(int i = 0; i < width; i++){
         for(int j = 0 ; j < height ; j++){
@@ -50,8 +74,8 @@ public class WorldGenerator extends World {
     }
 
     for(int i = 0; i < Iterations ; i++){
-        int rX = rand.nextInt(width);
-        int rY = rand.nextInt(height);
+        int rX = rand.nextInt(getWidth());
+        int rY = rand.nextInt(getHeight());
         neigh = examineNeighbours(rX,rY);
 
         if (ProbExceeded) {
@@ -112,12 +136,8 @@ public class WorldGenerator extends World {
       }
   }
 
-  public World Create(){
-      return new World(panes);
-  }
-
     /**
-     * @deprecated Cette methode est la methode basique pour generer un monde aleatoire base sur des probabilite d'etre du sol ou un mur.
+     * Cette methode est la methode basique pour generer un monde aleatoire base sur des probabilite d'etre du sol ou un mur. Cette methode est obsolete.
      * @return
      */
 /*

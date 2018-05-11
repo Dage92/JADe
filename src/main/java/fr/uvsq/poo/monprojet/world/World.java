@@ -18,20 +18,17 @@ public class World{
 
     /**
      * Constructeur de {@code world}
-     * @param panes
+     * @param
      */
-  World(Pane[][] panes){
+  public World(int x, int y){
     this.panes = panes;
-    this.width = panes.length;
-    this.height = panes[0].length;
+    this.width = x;
+    this.height = y;
   }
 
     /**
      * default constructor
      */
-  World() {
-
-  }
 
     /**
      * simple {@code set} de la hauteur
