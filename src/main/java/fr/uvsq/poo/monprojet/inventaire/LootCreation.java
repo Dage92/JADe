@@ -16,13 +16,13 @@ public class LootCreation {
         this.world = world;
     }
 
-    public Loot newRock(int x, int y) {
+    public Loot newRock() {
         Loot rock = new Loot('.', AsciiPanel.brightBlack, "rock", "Objet inerte qui exhube une volonte de roll");
         //LootMap.placeLoot(x, y); Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
         return rock;
     }
 
-    public Loot template(int x, int y) {
+    public Loot template() {
         Loot template = new Loot('T', AsciiPanel.brightGreen, "Template", "Two letters from a Templar");
         //LootMap.placeLoot(x, y); Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
         return template;

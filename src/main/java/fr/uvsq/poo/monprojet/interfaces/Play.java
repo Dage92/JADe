@@ -27,8 +27,10 @@ public class Play implements Window {
 
     }
 
-    private void createLoot(){
-
+    private void createLoot(LootCreation maker){
+        for (int i = 0; i < world.getWidth() * world.getHeight() / 20; i++) {
+            maker.newRock();
+        }
     }
 
     private void createWorld(){
@@ -73,11 +75,9 @@ public class Play implements Window {
         panel.writeCenter("'Echap' pour perdre ou 'Entrer' pour gagner", 22);
     }
 
-
-
     @Override
-    public Window reaction(KeyEvent key) {
-        switch (key.getKeyCode()) {
+    public Window reaction(KeyEvent userInput) {
+        switch (userInput.getKeyCode()) {
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_H: player.moveBy(-1, 0); break;
             case KeyEvent.VK_RIGHT:
@@ -91,6 +91,10 @@ public class Play implements Window {
             case KeyEvent.VK_B: player.moveBy(-1, 1); break;
             case KeyEvent.VK_N: player.moveBy(1, 1); break;
         }
+
+        //switch (userInput.getKeyChar()) {
+        //    case 'f': player.Player.AI.pickUpLoot(); break;
+        //}
         return this;
     }
 }
