@@ -5,7 +5,7 @@ Auteurs: GOODMAN David (21401471) & JACQUET Julien (21400579)
 
 Ce projet a eu pour but de développer un jeu d'exploration de donjon ([Rogue-like](https://fr.wikipedia.org/wiki/Rogue-like)).
 
-# Note:
+### Note:
 L'élève Anis Bouziane qui était le troisième membre de notre groupe a cessé toute communication depuis le vendredi 4 mai
 (même lorsqu'on lui téléphone ou envoie des messages) sans avoir rendu la moindre partie de son projet. Nous considérons donc qu'il ne fait
 plus partie de notre groupe et souhaiterions qu'il ne soit pas noté avec nous. Suite à sa disparition mystérieuse nous avons du fournir des
