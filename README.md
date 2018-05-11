@@ -51,12 +51,26 @@ Inventaire s'occupe d'ajouter, de retirer, et de déplacer les objets appartenan
 Loot defini les objets et leurs caractéristiques.
 LootCreation permet de générer de nouveaux objets.
 
+## Ce qui a été fait
+* Compilation avec Gradle.
+* Generation aléatoire du monde.
+* Affichage du Menu de depart.
+* Affichage du Monde.
+* Classes de l'affichage.
+* Classes du Monde.
+* Classes du Loot.
+* Classes des creatures (PNJ,PJ).
+* Classes de sauvegarde/chargement.
+* Affichage des deux écrans de fin différents.
+* Creation de la Javadoc.
+
 ## Parties Manquantes
-Pour la plupart des parties manquantes le code est présent mais l'implémentation fonctionnelle ne l'ai pas.
+Pour la plupart des parties manquantes le code est présent mais l'affichage fonctionnel ne l'ai pas.
 * Un membre.
-* Deplacement du Joueur.
+* Affichage des Deplacement du Joueur.
 * Apparition des monstres.
 * Apparition des objets.
+* Utilisation de la sauvegarde/charge. (le code est présent mais la sauvegarde n'est jamais appelée).
 
 ## Références
 * Article Wikipedia [Rogue-like](https://fr.wikipedia.org/wiki/Rogue-like)
