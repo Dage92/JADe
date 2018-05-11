@@ -33,7 +33,7 @@ des créatures.
 Dans le sous package player on a ce qui concerne uniquement le joueur, et dans le sous package npc on a ce qui coucerne les NPC.
 Chaque type de NPC est représenté par une classe différente.
 
-* Package interfaces: Contient toutes les classes nécéssaires pour la visualisation graphique du monde.
+* Package interface: Contient toutes les classes nécéssaires pour la visualisation graphique du monde.
 Window est tout d'abord l'interface principale pour gerer l'interface graphique et est implémenté par toute les autres classes dans le package interfaces.
 Start est la classe qui permet d'afficher l'état initiale graphique de notre RogueLike. Elle demande à l'utilisateur d'appuyer sur "Entrer" pour démarer le jeu.
 Play est la classe principale de notre jeu. Elle régit la plupart des comportement graphique qui se déroule lors de l'état de jeu.
@@ -49,7 +49,9 @@ Loot defini les objets et leurs caractéristiques.
 LootCreation permet de générer de nouveaux objets.
 
 ## Parties Manquantes
+Pour la plupart des parties manquantes le code est présent mais l'implémentation fonctionnelle ne l'ai pas.
 * Un membre.
+* Deplacement du Joueur.
 
 ## Références
 * Article Wikipedia [Rogue-like](https://fr.wikipedia.org/wiki/Rogue-like)
