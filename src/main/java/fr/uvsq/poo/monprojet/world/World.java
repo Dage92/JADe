@@ -97,8 +97,19 @@ public class World{
       return panes[x][y].symbole();
   }
 
-  public void /*Creatures*/ creature(int x, int y){
-
+    /**
+     *Verifie si il y a une creature a un emplacement donne
+     * @param x - coordonne x de la creature demandee
+     * @param y - coordonee y de la creature demandee
+     * @return la creature demandee ou null
+     */
+  public Creature creature(int x, int y){
+      for(Creature c : creatures){
+          if(c.x == x && c.y == y){
+              return c;
+          }
+      }
+      return null;
   }
 
   public void placeCreature(int x,int y){
