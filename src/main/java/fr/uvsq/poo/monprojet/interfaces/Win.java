@@ -8,12 +8,12 @@ public class Win implements Window {
 
     @Override
     public void display(AsciiPanel panel){
-        panel.write("GG", 1, 1);
-        panel.writeCenter("Appuyer sur 'Entrer' pour commencer un nouveau jeu", 22);
+        panel.writeCenter("GG", 1);
+        panel.writeCenter("Appuyer sur 'Entrer' pour commencer une nouvelle partie", 22);
     }
 
     @Override
-    public Window reaction(KeyEvent key){
-        return key.getKeyCode() == KeyEvent.VK_ENTER ? new Play() : this;
+    public Window reaction(KeyEvent userInput){
+        return userInput.getKeyCode() == KeyEvent.VK_ENTER ? new Play() : this;
     }
 }

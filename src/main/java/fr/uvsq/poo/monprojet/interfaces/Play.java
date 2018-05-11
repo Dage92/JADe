@@ -73,10 +73,7 @@ public class Play implements Window {
         panel.writeCenter("'Echap' pour perdre ou 'Entrer' pour gagner", 22);
     }
 
-    private void moveBy(int x, int y){
-        player.x = Math.max(0, Math.min(player.x + x, world.getWidth() - 1));
-        player.y = Math.max(0, Math.min(player.y + y, world.getHeight() - 1));
-    }
+
 
     @Override
     public Window reaction(KeyEvent key) {

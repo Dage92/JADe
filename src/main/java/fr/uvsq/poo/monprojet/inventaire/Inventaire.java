@@ -2,6 +2,7 @@ package fr.uvsq.poo.monprojet.inventaire;
 
 import java.util.List;
 
+
 public class Inventaire {
     private int espaceMAX;
     private int espace;
