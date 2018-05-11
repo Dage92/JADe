@@ -4,53 +4,75 @@ import fr.uvsq.poo.monprojet.world.World;
 
 import java.awt.*;
 
+/**
+ * La classe {@code Creature} represente toutes les creatures presentes dans le monde, que ce soit le joueur ou des NPC
+ * @author JACQUET Julien 21400579
+ */
 public class Creature {
 
-    World world;
+    private World world;
     Creature creature;
-    String name;
+
     int maxHP, HP, ATK, DEF, maxMP, MP;
     public int x, y;
     /*Inventaire inventaire;*/
-    char glyph;
+
+
+
+    char symbole;
+    public char getSymbole(){
+        return symbole;
+    }
+
     Color color;
-
-    void creature()
-    {
-
+    public Color getColor(){
+        return color;
     }
 
-    void creatureAI()
-    {
-
+    String name;
+    public String getName(){
+        return name;
     }
 
-    void getName()
-    {
-
+    public void setName(String n){
+        this.name = n;
     }
 
-    void setName()
-    {
-
+    /**
+     * constructeur de {@code Creature}
+     * @param world - le monde
+     * @param symbole -symbole de la creature
+     * @param color - couleur du symbole
+     * @param name - nom de la creature
+     * @param maxHP - nombre d'HP maximums de la creature
+     * @param ATK - attaque de la creature
+     * @param DEF - Defense de la creature
+     */
+    public Creature(World world, char symbole, Color color, String name, int maxHP, int ATK, int DEF) {
+        this.world = world;
+        this.symbole = symbole;
+        this.color = color;
+        this.name = name;
+        this.maxHP = maxHP;
+        this.HP = maxHP;
+        this.ATK = ATK;
     }
 
-    void attack()
-    {
-
+    public int attack(){
+        return this.ATK;
     }
 
-    void useSpeel()
-    {
-
+    public int checkHP(){
+        return this.HP;
     }
 
-    void equip()
-    {
-
+    /**
+     * Changement des HP apres avoir subit une attaque
+     * @param val - valeur de l'attaque recue
+     */
+    public void priseDeDegats(int val){
+        this.HP = this.HP - (val - this.DEF);
+        this.DEF = this.DEF - 1; //simule de l'usure
     }
 
-    public void moveBy(int x, int y){
-
-    }
 }
