@@ -1,8 +1,3 @@
-//===============================================================================
-//Auteur: GOODMAN David 21401471
-//Affiche l'inventaire du joueur.
-//===============================================================================
-
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
@@ -11,71 +6,61 @@ import fr.uvsq.poo.monprojet.inventaire.Loot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * La Classe abstraite {@code InventaireUI} sert a afficher l'inventaire du joueur.
+ * @author GOODMAN David 21401471
+ */
 public abstract class InventaireUI implements Window {
     protected Creature player;
-    private String lettres;
+    private String emplacement;
 
-    protected abstract String getAction();
-    protected abstract boolean isAcceptable(Loot loot);
-    protected abstract Window use(Loot loot);
-
+    /**
+     * Constructeur de {@code InventaireUI}
+     * @param player
+     */
     public InventaireUI(Creature player) {
         this.player = player;
-        this.lettres = "abcdefghijklmnopqrstuvwxyz";
+        this.emplacement = "abcdefghijklmnopqrstuvwxyz";
     }
 
+    /**
+     * Le methode affiche l'interface
+     * @param panel
+     */
     public void display(AsciiPanel panel) {
-        panel.writeCenter("--Inventaire--", 1);
-        ArrayList<String> listes = getList();
+        panel.writeCenter("***Inventaire***", 10);
+        ArrayList<String> inventaire = getInventaire();
+        int y = 10 - inventaire.size();
+        int x = 50;
 
-        int y = 23 - listes.size();
-        int x = 4;
-
-        if (listes.size() > 0) {
-            panel.clear(' ', x, y, 20, listes.size());
+        if (inventaire.size() > 0) {
+            panel.clear(' ', x, y, 20, inventaire.size());
         }
 
-        for (String liste : listes) {
+        for (String liste : inventaire) {
             panel.write(liste, x, y++);
         }
 
-        panel.clear(' ', 0, 23, 80, 1);
-        //panel.write("Que voulez-vous faire " + getVerbe() + "?", 2, 23);
-
+        panel.clear(' ', 0, 41, 100, 10);
         panel.repaint();
     }
 
-    private ArrayList<String> getList() {
-        ArrayList<String> listes = new ArrayList<String>();
-        /**Loot[] inventaire = player.inventaire().getItems();
+    /**
+     * Methode qui renvoie la liste des objets dans l'inventaire
+     */
+    private ArrayList<String> getInventaire() {
+        ArrayList<String> inventaire = new ArrayList<String>();
 
-        for (int i = 0; i < inventaire.length; i++){
-            Loot loot = inventaire[i];
-
-            if (loot == null || !isAcceptable(loot))
-                continue;
-
-            String liste = lettres.charAt(i) + " - " + loot.symbole() + " " + loot.name();
-
-            listes.add(liste);
-        }*/
-        return listes;
+        return inventaire;
     }
 
+    /**
+     * Methode qui reagit selon l'input du joueur
+     * @param userInput
+     */
     public Window reaction(KeyEvent userInput) {
         char c = userInput.getKeyChar();
 
-        /**Loot[] loot = player.inventaire().getItems();
-
-        if (lettres.indexOf(c) > -1
-                && loot.length > lettres.indexOf(c)
-                && loot[lettres.indexOf(c)] != null
-                && isAcceptable(loot[lettres.indexOf(c)])) {
-            return use(loot[lettres.indexOf(c)]);
-        } else if (userInput.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            return null;*/
-        //} else {
-            return this;
-        //}
+        return this;
     }
 }

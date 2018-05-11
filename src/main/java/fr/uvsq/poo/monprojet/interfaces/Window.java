@@ -1,17 +1,23 @@
-//===============================================================================
-//Auteur: GOODMAN David 21401471
-//Interface pour gerer la GUI.
-//===============================================================================
-
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;
 import java.awt.event.KeyEvent;
 
+/**
+ * L'interface {@code Window} pour gerer la GUI.
+ * @author GOODMAN David 21401471
+ */
 public interface Window {
-    /**Affiche sur une fenetre AsciiPanel et attend une commande de l'utilisateur.*/
 
+    /**
+     * Le methode affiche l'interface
+     * @param panel
+     */
     public void display(AsciiPanel panel);
 
+    /**
+     * Methode qui reagit selon l'input du joueur
+     * @param userInput
+     */
     public Window reaction(KeyEvent userInput);
 }

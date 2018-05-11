@@ -1,6 +1,0 @@
-#!/bin/bash
-# Éxécuter l'application
-
-./gradlew
-./extract
-./execute
