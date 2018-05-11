@@ -14,18 +14,22 @@ public class PlayerCreation extends Creature {
 
     private String name;
     private int age = 21;
-    private int HP = 128;
-    private int ATK = 40;
+    private int HP = 180;
+    private int ATK = 55;
     private int DEF= 40;
     private int MP = 60;
     private Color color = Color.cyan;
 
-    public void setP_name(String s){
+    public void setName(String s){
         this.name = s;
     }
 
-    public void setAge(int a){
-        this.age = a;
+    public String getName(){
+        return this.name;
+    }
+
+    public void setAge(){
+        this.age = age;
     }
 
     public int getAge(){
@@ -59,8 +63,12 @@ public class PlayerCreation extends Creature {
         return this.MP;
     }
 
+    public void setDEF(int a){ this.DEF = a;}
+
+    public int getDEF(){return this.DEF; }
+
     public PlayerCreation(World world, char symbole, Color color, String name, int maxHP, int ATK, int DEF) {
-        super(world, '@', color, name, maxHP, ATK, DEF);
+        super(world, '@', Color.white, "Joueur", 180, 55, 40);
         this.age = getAge();
         this.MP = getMP();
     }
