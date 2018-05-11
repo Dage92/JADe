@@ -29,12 +29,12 @@ public class WorldGenerator {
       this.width = width;
       this.height = height;
       this.panes = new Pane[width][height];
-      this.Neighbours = 4;
-      this.Iterations = 50000;
+      this.Neighbours = 5;
+      this.Iterations = 80000;
       this.ProbExceeded = true;
       this.paneX = width;
       this.paneY = height;
-      this.CloseCellProb = 45;
+      this.CloseCellProb = 75;
   }
 
   public World build(){
@@ -48,11 +48,11 @@ public class WorldGenerator {
      * @return WolrdGenerator
      */
   public WorldGenerator generate(){
-      int neigh = 0;
+      int neigh;
       for(int i = 0; i < width; i++){
         for(int j = 0 ; j < height ; j++){
             if(rand.nextInt(100)< CloseCellProb){
-                panes[i][j] = Pane.SOL;
+                this.panes[i][j] = Pane.SOL;//#
             }
         }
     }
@@ -64,18 +64,18 @@ public class WorldGenerator {
 
         if (ProbExceeded) {
             if(neigh > Neighbours){
-                panes[rX][rY] = Pane.MUR;
+                this.panes[rX][rY] = Pane.MUR;
             }
             else{
-                panes[rX][rY] = Pane.SOL;
+                this.panes[rX][rY] = Pane.SOL;
             }
         }
         else {
             if(neigh > Neighbours){
-                panes[rX][rY] = Pane.SOL;
+                this.panes[rX][rY] = Pane.SOL;
             }
             else{
-                panes[rX][rY] = Pane.MUR;
+                this.panes[rX][rY] = Pane.MUR;
             }
         }
     }
