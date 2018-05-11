@@ -62,7 +62,7 @@ LootCreation permet de générer de nouveaux objets.
 * Classes des creatures (PNJ,PJ).
 * Classes de sauvegarde/chargement.
 * Affichage des deux écrans de fin différents.
-* Creation de la Javadoc.
+* Creation de la Javadoc (disponible à : ./build/docs/javadoc).
 
 ## Parties Manquantes
 Pour la plupart des parties manquantes le code est présent mais l'affichage fonctionnel ne l'ai pas.
