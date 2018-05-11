@@ -13,14 +13,11 @@ efforts considérables pour combler le manque d'un tier de notre projet dans les
 
 ## Manuel Technique
 Vous pouvez trouver ci-joint l'UML de l'idée de notre projet. "UMLprojet.png"
-L'idée principale de notre projet était de diviser notre projet en grands axes et pour chacun de ces axes de faire un package, ensuite il suffisait
-de ce repartir les packages à créer équitablement.
+L'idée principale de notre projet était de diviser notre projet en grands axes et pour chacun de ces axes de faire un package, ensuite il suffisait de ce repartir les packages à créer équitablement.
 
 * Package world : Contient toutes les classes nécéssaires à la gémwnération du monde.
 Notre monde est composé de cases (Panes) qui peuvent etre soit du sol, soit un mur, soit une bordure.
-Dans la classe WorldGenerator se trouve la partie concernant la génération aléatoire. Pour faire bref la génération est
-proche du "jeu de la vie". C'est a dire qu'on selectionne une case et en fonction de ce qui entoure la case on fait
-grossir ou supprime la case.
+Dans la classe WorldGenerator se trouve la partie concernant la génération aléatoire. Grace a notre génération de niveau on obtient un labyrinthe.
 World regroupe les éléments du monde.
 LootMap sert a disposer de maniere aléatoire des elements de Loot dans le Monde.
 
@@ -52,6 +49,7 @@ LootCreation permet de générer de nouveaux objets.
 Pour la plupart des parties manquantes le code est présent mais l'implémentation fonctionnelle ne l'ai pas.
 * Un membre.
 * Deplacement du Joueur.
+* Apparition des monstres.
 
 ## Références
 * Article Wikipedia [Rogue-like](https://fr.wikipedia.org/wiki/Rogue-like)
