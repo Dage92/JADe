@@ -29,7 +29,7 @@ public class Play implements Window {
         width = 23;
         //msg = new ArrayList<String>();
         createWorld();
-        player = new PlayerCreation(world, player.getSymbole(), player.getColor(), player.getName(), player.getHP(), player.getATK(), player.getDEF);
+        player = new PlayerCreation(world, '@', Color.white, "Joueur", 180, 55, 40);
         //LootCreation maker = new LootCreation(world);
         //createLoot(maker);
     }
