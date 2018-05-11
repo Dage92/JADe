@@ -25,22 +25,19 @@ public class Play implements Window {
     //List<String> msg;
 
     public Play(){
-        height = 80;
-        width = 23;
+        height = 24;
+        width = 80;
         //msg = new ArrayList<String>();
         createWorld();
         player = new PlayerCreation(world, '@', Color.white, "Joueur", 180, 55, 40);
-        //LootCreation maker = new LootCreation(world);
-        //createLoot(maker);
+        LootCreation maker = new LootCreation(world);
+        createLoot(maker);
     }
 
 
     private void createCreature(Creature creator){ }
 
     private void createLoot(LootCreation maker){
-        for (int i = 0; i < world.getWidth() * world.getHeight() / 20; i++) {
-            maker.newRock();
-        }
     }
 
     private void createWorld(){
@@ -53,10 +50,6 @@ public class Play implements Window {
 
     public int scrollY(){
         return Math.max(0, Math.min(player.y - height / 2, world.getHeight() - height));
-    }
-
-    public void reaction(){
-
     }
 
     public void displayPanes(AsciiPanel panel, int left, int top){
