@@ -40,6 +40,7 @@ public class WorldGenerator extends World {
      * @return WolrdGenerator
      */
   public WorldGenerator  generate(){
+      int neigh = 0;
       for(int i = 0; i < width; i++){
         for(int j = 0 ; j < height ; j++){
             if(rand.nextInt(100)< CloseCellProb){
@@ -51,9 +52,10 @@ public class WorldGenerator extends World {
     for(int i = 0; i < Iterations ; i++){
         int rX = rand.nextInt(width);
         int rY = rand.nextInt(height);
+        neigh = examineNeighbours(rX,rY);
 
         if (ProbExceeded) {
-            if(examineNeighbours(rX,rY) > Neighbours){
+            if(neigh > Neighbours){
                 panes[rX][rY] = Pane.MUR;
             }
             else{
@@ -61,7 +63,7 @@ public class WorldGenerator extends World {
             }
         }
         else {
-            if(examineNeighbours(rX,rY) > Neighbours){
+            if(neigh > Neighbours){
                 panes[rX][rY] = Pane.SOL;
             }
             else{
