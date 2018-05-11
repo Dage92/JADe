@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Affiche l'un des deux etat de fin, celui ou le joueur a gagne.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;

@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Affiche l'etat de jeu.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;

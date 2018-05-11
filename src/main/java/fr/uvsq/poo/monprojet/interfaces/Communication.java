@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Affiche les communications entre NPC et le joueur.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;

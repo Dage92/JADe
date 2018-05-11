@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Class se chargeant de la gestion de l'inventaire.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.inventaire;
 
 import java.util.List;

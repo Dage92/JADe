@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Interface pour gerer la GUI.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.interfaces;
 
 import asciiPanel.AsciiPanel;

@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Class qui controle la gestion de la creation d'objet
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.inventaire;
 
 import java.awt.Color;
@@ -15,15 +20,10 @@ public class LootCreation {
         this.world = world;
     }
 
-    public Loot newRock() {
-        Loot rock = new Loot('.', AsciiPanel.brightBlack, "rock", "Objet inerte qui exhube une volonte de roll");
-        //LootMap.placeLoot(x, y); Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
-        return rock;
-    }
-
     public Loot template() {
-        Loot template = new Loot('T', AsciiPanel.brightGreen, "Template", "Two letters from a Templar");
+        Loot template = new Loot('t', AsciiPanel.brightGreen, "Template", "Two letters from a Templar");
         //LootMap.placeLoot(x, y); Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
         return template;
     }
+    //a reproduire pour n'importe quel objet
 }

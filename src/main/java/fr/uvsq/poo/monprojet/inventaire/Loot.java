@@ -1,3 +1,8 @@
+//===============================================================================
+//Auteur: GOODMAN David 21401471
+//Class qui controle les objet rencontre par le joueur.
+//===============================================================================
+
 package fr.uvsq.poo.monprojet.inventaire;
 
 import java.awt.Color;
