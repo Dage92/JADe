@@ -288,7 +288,7 @@ public class AsciiPanel extends JPanel {
      * Default size is 80x24.
      */
     public AsciiPanel() {
-        this(80, 24);
+        this(100, 50);
     }
 
     /**

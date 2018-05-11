@@ -12,8 +12,8 @@ public class Start implements Window{
 
     @Override
     public void display(AsciiPanel panel){
-        panel.writeCenter("Bienvenue dans le monde de JADe!", 11);
-        panel.writeCenter("Appuyer sur 'Entrer' pour jouer", 22);
+        panel.writeCenter("Bienvenue dans le monde de JADe!", 25);
+        panel.writeCenter("Appuyer sur 'Entrer' pour jouer", 48);
     }
 
     @Override

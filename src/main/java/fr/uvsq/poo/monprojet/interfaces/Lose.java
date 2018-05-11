@@ -13,8 +13,8 @@ public class Lose implements Window {
 
     @Override
     public void display(AsciiPanel panel){
-        panel.writeCenter("Game Over", 1);
-        panel.writeCenter("Appuyer sur 'Entrer' pour commencer une nouvelle partie", 22);
+        panel.writeCenter("Game Over: Rien ne pourra arreter la sociere maintenent... ", 24);
+        panel.writeCenter("Appuyer sur 'Entrer' pour commencer une nouvelle partie", 48);
     }
 
     @Override

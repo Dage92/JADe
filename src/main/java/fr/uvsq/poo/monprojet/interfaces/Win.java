@@ -13,8 +13,8 @@ public class Win implements Window {
 
     @Override
     public void display(AsciiPanel panel){
-        panel.writeCenter("GG", 1);
-        panel.writeCenter("Appuyer sur 'Entrer' pour commencer une nouvelle partie", 22);
+        panel.writeCenter("Bravo! Vous avez vaincu les forces des tenebre!", 24);
+        panel.writeCenter("Appuyer sur 'Entrer' pour commencer une nouvelle partie", 48);
     }
 
     @Override

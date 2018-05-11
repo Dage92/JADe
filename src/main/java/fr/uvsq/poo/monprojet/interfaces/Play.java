@@ -25,8 +25,8 @@ public class Play implements Window {
     //List<String> msg;
 
     public Play(){
-        height = 24;
-        width = 80;
+        height = 40;
+        width = 100;
         //msg = new ArrayList<String>();
         createWorld();
         player = new PlayerCreation(world, '@', Color.white, "Joueur", 180, 55, 40);
@@ -41,7 +41,7 @@ public class Play implements Window {
     }
 
     private void createWorld(){
-        world = new WorldGenerator(90,32).makeDungeon().build();
+        world = new WorldGenerator(100,40).makeDungeon().build();
     }
 
     public int scrollX(){
@@ -75,7 +75,7 @@ public class Play implements Window {
         displayPanes(panel, left, top);
 
         panel.write('X', player.x, player.y);
-        panel.writeCenter("'Echap' pour perdre ou 'Entrer' pour gagner", 22);
+        panel.writeCenter("'Echap' pour perdre ou 'Entrer' pour gagner", 44);
     }
 
     @Override
