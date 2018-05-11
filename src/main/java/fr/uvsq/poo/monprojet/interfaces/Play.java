@@ -10,17 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Play implements Window {
-    private AsciiPanel panel;
     private Creature player;
     private World world;
     private int height;
     private int width;
-    List<String> msg;
+    //List<String> msg;
 
     public Play(){
         height = 80;
         width = 23;
-        msg = new ArrayList<String>();
+        //msg = new ArrayList<String>();
         createWorld();
     }
 
@@ -33,7 +32,7 @@ public class Play implements Window {
     }
 
     private void createWorld(){
-        world = new WorldGenerator(99,99).makeDungeon();
+        world = new WorldGenerator(90,32).makeDungeon();
     }
 
     public int scrollX(){
@@ -69,39 +68,31 @@ public class Play implements Window {
         int top = scrollY();
 
         displayPanes(panel, left, top);
+
+        panel.write('X', player.x, player.y);
+        panel.writeCenter("'Echap' pour perdre ou 'Entrer' pour gagner", 22);
+    }
+
+    private void moveBy(int x, int y){
+        player.x = Math.max(0, Math.min(player.x + x, world.getWidth() - 1));
+        player.y = Math.max(0, Math.min(player.y + y, world.getHeight() - 1));
     }
 
     @Override
     public Window reaction(KeyEvent key) {
         switch (key.getKeyCode()) {
             case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_H:
-                player.moveBy(-1, 0);
-                break;
+            case KeyEvent.VK_H: player.moveBy(-1, 0); break;
             case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_L:
-                player.moveBy(1, 0);
-                break;
+            case KeyEvent.VK_L: player.moveBy(1, 0); break;
             case KeyEvent.VK_UP:
-            case KeyEvent.VK_K:
-                player.moveBy(0, -1);
-                break;
+            case KeyEvent.VK_K: player.moveBy(0, -1); break;
             case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_J:
-                player.moveBy(0, 1);
-                break;
-            case KeyEvent.VK_Y:
-                player.moveBy(-1, -1);
-                break;
-            case KeyEvent.VK_U:
-                player.moveBy(1, -1);
-                break;
-            case KeyEvent.VK_B:
-                player.moveBy(-1, 1);
-                break;
-            case KeyEvent.VK_N:
-                player.moveBy(1, 1);
-                break;
+            case KeyEvent.VK_J: player.moveBy(0, 1); break;
+            case KeyEvent.VK_Y: player.moveBy(-1, -1); break;
+            case KeyEvent.VK_U: player.moveBy(1, -1); break;
+            case KeyEvent.VK_B: player.moveBy(-1, 1); break;
+            case KeyEvent.VK_N: player.moveBy(1, 1); break;
         }
         return this;
     }
