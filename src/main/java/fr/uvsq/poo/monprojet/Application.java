@@ -6,7 +6,11 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.*;
 import java.util.*;
 import java.lang.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import asciiPanel.AsciiPanel;
+import fr.uvsq.poo.monprojet.interfaces.Window;
+import fr.uvsq.poo.monprojet.interfaces.Start;
 
 
 /**
@@ -14,20 +18,40 @@ import asciiPanel.AsciiPanel;
  * @author GOODMAN David 21401471 & JACQUET Julien 21400579
  */
 
-public class Application extends JFrame{
-    //APPLICATION;
+public class Application extends JFrame implements KeyListener {
+    private static final Logger logger = LogManager.getLogger(Application.class);
     private static final long serialVersionUID = 1060623638149583738L;
     private AsciiPanel panel;
-    private static final Logger logger = LogManager.getLogger(Application.class);
+    private Window window;
     public static String greeting = "Hello!";
 
     public Application(){
         super();
         panel = new AsciiPanel();
-        panel.writeCenter("JADe", 1);
         add(panel);
         pack();
+        window = new Start();
+        addKeyListener(this);
+        repaint();
     }
+
+    @Override
+    public void repaint(){
+        panel.clear();
+        window.display(panel);
+        super.repaint();
+    }
+    @Override
+    public void keyReleased(KeyEvent userInput){ }
+
+    @Override
+    public void keyPressed(KeyEvent userInput){
+        window = window.reaction(userInput);
+        repaint();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent userInput) { }
 
     /**
      * La methode de classe <em>main</em> se contente de deleguer le lancement du programme a la methode <em>run</em>.
