@@ -21,7 +21,7 @@ public enum Pane{
      * @return char
      */
   public char symbole(){
-      return symbole;
+      return this.symbole;
     }
 
     /**
@@ -29,7 +29,7 @@ public enum Pane{
      * @return String
      */
   public String def(){
-      return def;
+      return this.def;
     }
 
     /**
@@ -37,7 +37,7 @@ public enum Pane{
      * @return
      */
     public Color color(){
-      return color;
+      return this.color;
     }
 
 

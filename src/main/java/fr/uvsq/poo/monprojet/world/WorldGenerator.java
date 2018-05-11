@@ -7,12 +7,12 @@ import java.util.Random;
  * (non procedurale)
  * @author JACQUET Julien 21400579
  */
-public class WorldGenerator extends World {
-  private int height = 99;
-  private int width = 99;
+public class WorldGenerator {
+  private int height;
+  private int width;
   private int paneX;
   private int paneY;
-  public Pane[][] panes;
+  private Pane[][] panes;
 
   private Random rand = new Random();
   private int Neighbours;
@@ -21,46 +21,30 @@ public class WorldGenerator extends World {
   private boolean ProbExceeded;
 
     /**
-     * return height or fallback to 99(bound must be positive)
-     * @return - height or 99
-     */
-  public int getHeight(){
-      if(this.height > 0){
-          return this.height;
-      }
-      //fallback
-      return 99;
-  }
-
-    /**
-     * return width or fallback to 99 (bound must be positive)
-     * @return - width or 99
-     */
-  public int getWidth(){
-      if(this.height > 0){
-          return this.width;
-      }
-      return 99;
-  }
-
-    /**
      * Constructeur de {@code WorldGenerator}
-     * @param width
-     * @param height
+     * @param width - largeur
+     * @param height - hauteur
      */
   public WorldGenerator(int width, int height){
-      super(height , width);
-      Neighbours = 4;
-      Iterations = 50000;
-      ProbExceeded = true;
-      paneX = width;
-      paneY = height;
-      CloseCellProb = 45;
+      this.width = width;
+      this.height = height;
+      this.panes = new Pane[width][height];
+      this.Neighbours = 4;
+      this.Iterations = 50000;
+      this.ProbExceeded = true;
+      this.paneX = width;
+      this.paneY = height;
+      this.CloseCellProb = 45;
+  }
+
+  public World build(){
+      return new World(panes);
   }
 
     /**
      * Cette methode est l'algorithme de generation aleatoire :
      * Inspire de l'algorithme en C# disponible ici : http://www.evilscience.co.uk/map-generator/ et readapte au JAVA.
+     * Similaire a une forme de "Jeu de la vie".
      * @return WolrdGenerator
      */
   public WorldGenerator generate(){
@@ -74,8 +58,8 @@ public class WorldGenerator extends World {
     }
 
     for(int i = 0; i < Iterations ; i++){
-        int rX = rand.nextInt(getWidth());
-        int rY = rand.nextInt(getHeight());
+        int rX = rand.nextInt(this.width);
+        int rY = rand.nextInt(this.height);
         neigh = examineNeighbours(rX,rY);
 
         if (ProbExceeded) {
@@ -99,10 +83,10 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Methode privee necessaire au fonctionnement de {@code generate}
-     * @param xVal
-     * @param yVal
-     * @return
+     * Methode privee evaluant les voisins d'une case pour {@code generate}
+     * @param xVal - coordonnee x de la case
+     * @param yVal - coordonnee y de la case
+     * @return - compteur de checkPanel
      */
   private int examineNeighbours(int xVal, int yVal){
       int count = 0;
@@ -117,10 +101,10 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Methode privee necessaire au fonctionnement de {@code generate}
-     * @param x
-     * @param y
-     * @return
+     * Methode privee qui test le type d'une case {@code examineNeighbours}
+     * @param x - coordonnee x de la case
+     * @param y - coordonnee y de la case
+     * @return true si la case est du SOL sinon false
      */
   private Boolean checkPane(int x, int y){
       if(x >= 0 & x < width & y >= 0 & y<height){
@@ -137,8 +121,8 @@ public class WorldGenerator extends World {
   }
 
     /**
-     * Cette methode est la methode basique pour generer un monde aleatoire base sur des probabilite d'etre du sol ou un mur. Cette methode est obsolete.
-     * @return
+     * OBSOLETE : Cette methode est la methode basique pour generer un monde aleatoire base sur des probabilite d'etre du sol ou un mur. Cette methode est obsolete.
+     * @return WorldGenerator aleatoire pur, donc un nuage aleatoire de sol ou mur.
      */
 /*
   private WorldGenerator generateRandomPanes(){
@@ -157,7 +141,7 @@ public class WorldGenerator extends World {
 */
 
     /**
-     * Appel commun a generate, est communement utilise comme methode de generation du monde.
+     * Appel a generate, est communement utilise comme methode de generation du monde.
      * @return WorldGenerator
      */
   public WorldGenerator makeDungeon(){

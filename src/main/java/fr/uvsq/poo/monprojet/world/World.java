@@ -3,13 +3,13 @@ package fr.uvsq.poo.monprojet.world;
 import fr.uvsq.poo.monprojet.creatures.Creature;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * La classe world represente le monde de notre Rogue-Like compose de {@code Panes}
  * @author JACQUET Julien 21400579
  */
-
 public class World{
   private Pane[][] panes;
   private int height;
@@ -17,33 +17,16 @@ public class World{
   List<Creature> creatures;
 
     /**
-     * Constructeur de {@code world}
-     * @param
+     * Constructeur de {@code World}
+     * @param panes - tableau 2D de cases
      */
-  public World(int x, int y){
+  public World(Pane[][] panes){
     this.panes = panes;
-    this.width = x;
-    this.height = y;
+    this.width = panes.length;
+    this.height = panes[0].length;
+    this.creatures =new ArrayList<Creature>();
   }
 
-    /**
-     * default constructor
-     */
-
-    /**
-     * simple {@code set} de la hauteur
-     * @param h
-     */
-    public void setHeight(int h){
-      this.height = h;
-  }
-    /**
-     * simple {@code set} de la largeur
-     * @param w
-     */
-  public void setWidth(int w){
-      this.width = w;
-  }
     /**
      * simple {@code get} de la hauteur
      */
@@ -59,8 +42,8 @@ public class World{
 
     /**
      * Methode qui renvoie une case
-     * @param x
-     * @param y
+     * @param x - width
+     * @param y - height
      * @return Pane
      */
   public Pane pane(int x, int y){
@@ -74,8 +57,8 @@ public class World{
 
     /**
      * Methode qui renvoie la couleur d'une case
-     * @param x
-     * @param y
+     * @param x - width
+     * @param y - height
      * @return Color
      */
   public Color color(int x, int y){
@@ -84,14 +67,13 @@ public class World{
 
     /**
      * Methode qui renvoie le symbole d'une case
-     * @param x
-     * @param y
+     * @param x - width
+     * @param y - height
      * @return char
      */
 
   public char symbole(int x,int y){
-
-      return panes[x][y].symbole();
+      return pane(x,y).symbole();
   }
 
     /**
